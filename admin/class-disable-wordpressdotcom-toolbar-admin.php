@@ -222,7 +222,12 @@ class Disable_Wordpressdotcom_Toolbar_Admin {
 	}
 
 	public function disable_wpcom_toolbar() {
-		$this->remove_class_action('admin_bar_init', 'A8C_WPCOM_Masterbar', 'init', 10);
+		//$this->remove_class_action('admin_bar_init', 'A8C_WPCOM_Masterbar', 'init', 10);
+		//last updated 22-01-2021
+		$this->remove_class_action('admin_bar_init', 'Automattic\Jetpack\Dashboard_Customizations\Masterbar', 'init', 10);
+		$this->remove_class_action('admin_init', 'Automattic\Jetpack\Dashboard_Customizations\Admin_Color_Schemes', 'register_admin_color_schemes', 10);
+		$this->remove_class_action('admin_enqueue_scripts', 'Automattic\Jetpack\Dashboard_Customizations\Admin_Color_Schemes', 'enqueue_core_color_schemes_overrides', 10);
+		$this->remove_class_action('admin_enqueue_scripts', 'Automattic\Jetpack\Dashboard_Customizations', 'enqueue_core_color_schemes_overrides', 10);
 	}
 
 }
